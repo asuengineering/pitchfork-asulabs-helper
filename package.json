@@ -1,0 +1,11 @@
+{
+  "name": "pitchfork-plugin-template",
+  "description": "An ASU Engineering plugin, designed for use with the Pitchfork theme.",
+  "version": "0.0.1",
+  "repository": "asuengineering/pitchfork-plugin-template",
+  "license": "MIT",
+  "dependencies": {
+    "gulp-wp": "^0.6.9",
+    "@asu/unity-bootstrap-theme": "^1.7.6"
+  }
+}

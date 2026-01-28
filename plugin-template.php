@@ -1,16 +1,16 @@
 <?php
 /**
- * Plugin Name:     Pitchfork Plugin Template
- * Plugin URI:      https://github.com/asuengineering
- * Description:     (text)
+ * Plugin Name:     ASU Labs - Migration Helper
+ * Plugin URI:      https://github.com/asuengineering/pitchfork-asulabs-helper
+ * Description:     Redefine custom post types associated with the ASU Labs theme so that they persist when the theme itself is deactivated.
  * Author:          ASU Engineering
  * Author URI:      https://engineering.asu.edu
- * Version:         0.0.1
+ * Version:         0.1.0
  *
- * @package         starter_plugin
- * Text Domain:     (text)
+ * @package         asulabs-migration
+ * Text Domain:     asulabs-migration
  *
- * GitHub Plugin URI: https://github.com/asuengineering
+ * GitHub Plugin URI: https://github.com/asuengineering/pitchfork-asulabs-helper
  *
  */
 
@@ -20,15 +20,16 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Variable for root directory of this plugin.
-define( 'STARTER_PLUGIN_BASE_PATH', plugin_dir_path( __FILE__ ) );
+define( 'ASULABS_MIGRATION_BASE_PATH', plugin_dir_path( __FILE__ ) );
 
 // Function: Activate.
 // Function: Deactivate.
 // Function: Execute plugin.
 
 // Enqueue scripts.
-require_once STARTER_PLUGIN_BASE_PATH . '/inc/enqueue-scripts.php';
+// require_once ASULABS_MIGRATION_BASE_PATH . '/inc/enqueue-scripts.php';
 
 // ACF configurations.
-require_once STARTER_PLUGIN_BASE_PATH . '/inc/acf-config.php';
-require_once STARTER_PLUGIN_BASE_PATH . '/inc/acf-register-blocks.php';
+require_once ASULABS_MIGRATION_BASE_PATH . '/inc/custom-post-types.php';
+require_once ASULABS_MIGRATION_BASE_PATH . '/inc/people-block-creation.php';
+// require_once ASULABS_MIGRATION_BASE_PATH . '/inc/acf-register-blocks.php';

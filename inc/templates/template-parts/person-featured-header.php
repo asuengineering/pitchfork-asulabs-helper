@@ -8,47 +8,41 @@
 
 <header class="entry-header">
 
-	<div class="display-person">
+	<div class="display-person row gx-4 gy-4 align-items-start">
 
-		<div class="post-thumbnail">
+		<div class="post-thumbnail col-lg-4 col-md-5 person-image">
 			<?php
 			if ( has_post_thumbnail() ) {
-				// Use large thumbnail; fall back to full size if custom size not available
-				the_post_thumbnail( array( 400, 400 ), array( 'class' => 'pure-img' ) );
+				the_post_thumbnail( array( 400, 400 ), array( 'class' => 'img-fluid rounded-circle' ) );
 			} else {
-				// Use a placeholder image
-				echo '<img src="' . esc_url( plugins_url( 'images/person-placeholder.svg', dirname( __DIR__, 2 ) . '/plugin-template.php' ) ) . '" alt="' . esc_attr( get_the_title() ) . '" class="pure-img" />';
+				echo '<img src="' . esc_url( plugins_url( 'images/person-placeholder.svg', dirname( __DIR__, 2 ) . '/plugin-template.php' ) ) . '" alt="' . esc_attr( get_the_title() ) . '" class="img-fluid rounded-circle" />';
 			}
 			?>
 		</div><!-- .post-thumbnail -->
 
 		<?php
+		$first  = get_post_meta( get_the_ID(), '_person_first_name', true ) ?: get_post_meta( get_the_ID(), 'person_first_name', true );
+		$middle = get_post_meta( get_the_ID(), '_person_middle_name', true ) ?: get_post_meta( get_the_ID(), 'person_middle_name', true );
+		$last   = get_post_meta( get_the_ID(), '_person_last_name', true ) ?: get_post_meta( get_the_ID(), 'person_last_name', true );
+		$suffix = get_post_meta( get_the_ID(), '_person_suffix', true ) ?: get_post_meta( get_the_ID(), 'person_suffix', true );
 
-			// Get person's full name from meta details
-			$first  = get_post_meta( get_the_ID(), '_person_first_name', true ) ?: get_post_meta( get_the_ID(), 'person_first_name', true );
-			$middle = get_post_meta( get_the_ID(), '_person_middle_name', true ) ?: get_post_meta( get_the_ID(), 'person_middle_name', true );
-			$last   = get_post_meta( get_the_ID(), '_person_last_name', true ) ?: get_post_meta( get_the_ID(), 'person_last_name', true );
-			$suffix = get_post_meta( get_the_ID(), '_person_suffix', true ) ?: get_post_meta( get_the_ID(), 'person_suffix', true );
+		if ( ! empty( $first ) ) {
+			$first .= ' ';
+		}
+		if ( ! empty( $middle ) ) {
+			$middle .= ' ';
+		}
 
-			// Append spaces if not blank.
-			if ( ! empty( $first ) ) {
-				$first .= ' ';
-			}
+		echo '<div class="profile-metadata col-lg-8 col-md-7">';
+		echo '<div class="entry-title">';
+		echo '<h1 class="person-name">' . esc_html( $first . $middle . $last . ' ' . $suffix ) . '</h1>';
 
-			if ( ! empty( $middle ) ) {
-				$middle .= ' ';
-			}
-
-			echo '<div class="entry-title"><h1 class="person-name">' . esc_html( $first . $middle . $last . ' ' . $suffix ) . '</h1>';
-
-			$tagline = get_post_meta( get_the_ID(), '_person_tagline', true ) ?: get_post_meta( get_the_ID(), 'person_tagline', true );
-
-			if ( empty( $tagline ) ) {
-				// overwrite the tagline information with taxonomy information if it's blank.
-				$tagline = strip_tags( get_the_term_list( get_the_ID(), 'faculty-type', '', ', ', '' ) );
-			}
-
-			echo '<p class="person-tagline">' . esc_html( $tagline ) . '</p></div>';
+		$tagline = get_post_meta( get_the_ID(), '_person_tagline', true ) ?: get_post_meta( get_the_ID(), 'person_tagline', true );
+		if ( empty( $tagline ) ) {
+			$tagline = strip_tags( get_the_term_list( get_the_ID(), 'faculty-type', '', ', ', '' ) );
+		}
+		echo '<p class="lead person-tagline">' . esc_html( $tagline ) . '</p>';
+		echo '</div>';
 		?>
 
 		<ul class="contact-details">
@@ -77,7 +71,10 @@
 			}
 			?>
 		</ul>
-	</div>
+
+		</div><!-- .profile-metadata -->
+
+	</div><!-- .display-person -->
 
 </header><!-- .entry-header -->
 

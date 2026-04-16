@@ -1,18 +1,11 @@
 // CPT Person - single-person
 .single-person {
 	.entry-header {
-		background-color: #f7f7f7;
 		padding: 3rem 0;
 	}
 
 	.display-person {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: flex-start;
-		gap: 2rem;
-		max-width: 1200px;
-		margin: 0 auto;
-		padding: 0 1rem;
+		margin-top: 10rem;
 	}
 
 	.person-image {

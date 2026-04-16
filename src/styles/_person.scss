@@ -1,0 +1,18 @@
+.single-person {
+	.display-person {
+		margin-top: 10rem;
+		margin-bottom: 4rem;
+	}
+
+	.profile-links {
+		margin: 2rem 0;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+}
+
+// CPT Person,
+// Archive Page. AKA: "The Directory."
+
+.post-type-archive-person {}

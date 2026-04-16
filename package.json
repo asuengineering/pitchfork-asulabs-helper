@@ -5,7 +5,6 @@
   "repository": "asuengineering/pitchfork-plugin-template",
   "license": "MIT",
   "dependencies": {
-    "gulp-wp": "^0.6.9",
-    "@asu/unity-bootstrap-theme": "^1.7.6"
+    "gulp-wp": "0.6.9"
   }
 }

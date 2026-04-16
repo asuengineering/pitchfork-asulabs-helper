@@ -1,0 +1,12 @@
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .bg { fill: #e0e0e0; }
+      .text { font-family: Arial, sans-serif; font-size: 48px; fill: #999; text-anchor: middle; }
+      .icon { font-family: Arial, sans-serif; font-size: 120px; fill: #bbb; text-anchor: middle; }
+    </style>
+  </defs>
+  <rect class="bg" width="300" height="300"/>
+  <text class="icon" x="150" y="170">👤</text>
+  <text class="text" x="150" y="250">No Photo</text>
+</svg>

@@ -9,8 +9,29 @@
 /**
  * Template include paths.
  *
+ * - Person CPT --> plugin templates (single-person.php, archive-person.php)
  * - Research CPT --> page.php
  */
+add_filter( 'template_include', 'asulabs_person_use_plugin_template', 10 );
+function asulabs_person_use_plugin_template( $template ) {
+
+	if ( is_singular( 'person' ) ) {
+		$plugin_template = plugin_dir_path( __FILE__ ) . 'templates/single-person.php';
+		if ( file_exists( $plugin_template ) ) {
+			return $plugin_template;
+		}
+	}
+
+	if ( is_post_type_archive( 'person' ) ) {
+		$plugin_template = plugin_dir_path( __FILE__ ) . 'templates/archive-person.php';
+		if ( file_exists( $plugin_template ) ) {
+			return $plugin_template;
+		}
+	}
+
+	return $template;
+}
+
 add_filter( 'template_include', 'asulabs_research_use_page_template' );
 function asulabs_research_use_page_template( $template ) {
 
@@ -98,31 +119,55 @@ function asulabs_transition_make_cpt_person() {
     }
 
     $labels = array(
-        'name'          => _x( 'People', 'Post Type General Name' ),
-        'singular_name' => _x( 'Person', 'Post Type Singular Name' ),
-        'menu_name'     => __( 'Person' ),
+        'name'                  => _x( 'People', 'Post Type General Name', 'text_domain' ),
+        'singular_name'         => _x( 'Person', 'Post Type Singular Name', 'text_domain' ),
+        'menu_name'             => __( 'People', 'text_domain' ),
+        'name_admin_bar'        => __( 'Person', 'text_domain' ),
+        'archives'              => __( 'People Directory', 'text_domain' ),
+        'all_items'             => __( 'All People', 'text_domain' ),
+        'add_new_item'          => __( 'Add New Person', 'text_domain' ),
+        'add_new'               => __( 'Add New', 'text_domain' ),
+        'new_item'              => __( 'New Person', 'text_domain' ),
+        'edit_item'             => __( 'Edit Person', 'text_domain' ),
+        'update_item'           => __( 'Update Person', 'text_domain' ),
+        'view_item'             => __( 'View Person', 'text_domain' ),
+        'view_items'            => __( 'View People', 'text_domain' ),
+        'search_items'          => __( 'Search People', 'text_domain' ),
+        'not_found'             => __( 'No people found', 'text_domain' ),
+        'not_found_in_trash'    => __( 'No people found in Trash', 'text_domain' ),
+        'featured_image'        => __( 'Profile Photo', 'text_domain' ),
+        'set_featured_image'    => __( 'Set profile photo', 'text_domain' ),
+        'remove_featured_image' => __( 'Remove profile photo', 'text_domain' ),
+        'use_featured_image'    => __( 'Use as profile photo', 'text_domain' ),
     );
 
     $args = array(
-        'label'               => __( 'People' ),
+        'label'               => __( 'People', 'text_domain' ),
+        'description'         => __( 'Faculty and student profiles', 'text_domain' ),
         'labels'              => $labels,
         'supports'            => array( 'title', 'editor', 'thumbnail', 'custom-fields', 'page-attributes' ),
-        'public'              => false,
-        'show_ui'             => false,   // hide from admin menus
-        'show_in_menu'        => false,
-        'exclude_from_search' => true,
-        'publicly_queryable'  => false,
-        'has_archive'         => false,
-        'rewrite'             => false,
+        'taxonomies'          => array( 'faculty-type' ),
+        'public'              => true,
+        'show_ui'             => true,
+        'show_in_menu'        => true,
+        'menu_position'       => 22,
+        'menu_icon'           => 'dashicons-businessman',
+        'show_in_admin_bar'   => true,
+        'show_in_nav_menus'   => true,
+        'can_export'          => true,
+        'has_archive'         => 'directory',
+        'exclude_from_search' => false,
+        'publicly_queryable'  => true,
         'capability_type'     => 'post',
         'hierarchical'        => false,
-        'show_in_rest'        => false,
+        'rewrite'             => array( 'slug' => 'person' ),
+        'show_in_rest'        => true,
     );
 
 	register_post_type( 'person', $args );
 }
 
-// TAX: Faculty/Student Type (hidden from UI / REST)
+// TAX: Faculty/Student Type
 add_action( 'init', 'asulabs_transition_make_faculty_type_taxonomy', 10 );
 function asulabs_transition_make_faculty_type_taxonomy() {
 
@@ -152,13 +197,12 @@ function asulabs_transition_make_faculty_type_taxonomy() {
     $args = array(
         'labels'            => $labels,
         'hierarchical'      => true,
-        // Hidden from public UI and REST, but still queryable programmatically
-        'public'            => false,
-        'show_ui'           => false,
-        'show_admin_column' => false,
-        'show_in_nav_menus' => false,
+        'public'            => true,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'show_in_nav_menus' => true,
         'show_tagcloud'     => false,
-        'show_in_rest'      => false,
+        'show_in_rest'      => true,
     );
 
     register_taxonomy( 'faculty-type', array( 'person' ), $args );

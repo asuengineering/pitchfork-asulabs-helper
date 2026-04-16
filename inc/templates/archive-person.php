@@ -10,7 +10,7 @@ get_header();
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
-			
+
 			<header class="page-header">
 				<h1 class="page-title">Directory</h1>
 			</header><!-- .page-header -->
@@ -54,7 +54,7 @@ get_header();
 					echo '<section id="featured">';
 					while ( $featured->have_posts() ) {
 						$featured->the_post();
-						
+
 						// Use plugin-relative path for template part
 						$template_part = plugin_dir_path( __DIR__ ) . 'templates/template-parts/person-archive-entry.php';
 						if ( file_exists( $template_part ) ) {
@@ -92,7 +92,7 @@ get_header();
 
 						while ( $people->have_posts() ) {
 							$people->the_post();
-							
+
 							// Use plugin-relative path for template part
 							$template_part = plugin_dir_path( __DIR__ ) . 'templates/template-parts/person-archive-entry.php';
 							if ( file_exists( $template_part ) ) {
@@ -104,7 +104,7 @@ get_header();
 					echo '</section><!-- end #' . esc_attr( $term->name ) . ' -->';
 				}
 				?>
-			 
+
 		</main><!-- #main -->
 	</div><!-- #primary -->
 

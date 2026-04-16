@@ -21,7 +21,7 @@
 				?>
 			</a>
 		</div><!-- .post-thumbnail -->
-		
+
 		<div class="entry-wrap">
 			<?php
 
@@ -80,7 +80,7 @@
 				echo '</li>';
 			}
 			?>
-		
+
 			</ul>
 		</div><!-- .entry-wrap -->
 

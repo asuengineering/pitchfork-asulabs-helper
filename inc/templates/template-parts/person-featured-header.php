@@ -6,8 +6,8 @@
  */
 ?>
 
-<header class="entry-header"> 
-	
+<header class="entry-header">
+
 	<div class="display-person">
 
 		<div class="post-thumbnail">

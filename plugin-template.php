@@ -27,7 +27,7 @@ define( 'ASULABS_MIGRATION_BASE_PATH', plugin_dir_path( __FILE__ ) );
 // Function: Execute plugin.
 
 // Enqueue scripts.
-// require_once ASULABS_MIGRATION_BASE_PATH . '/inc/enqueue-scripts.php';
+require_once ASULABS_MIGRATION_BASE_PATH . '/inc/enqueue-scripts.php';
 
 // ACF configurations.
 require_once ASULABS_MIGRATION_BASE_PATH . '/inc/custom-post-types.php';

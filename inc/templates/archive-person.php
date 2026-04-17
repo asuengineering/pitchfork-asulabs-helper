@@ -72,7 +72,7 @@ get_header();
 					$term = get_term( $term_id, 'faculty-type' );
 
 					// Lookup and print term header
-					echo '<section id="' . esc_attr( $term->slug ) . '" class="nonfeatured"><h2>' . esc_html( $term->name ) . '</h2>';
+					echo '<section id="' . esc_attr( $term->slug ) . '" class="nonfeatured"><h2><span class="highlight-black">' . esc_html( $term->name ) . '</span></h2>';
 
 					$args_people = array(
 						'post_type' => 'person',

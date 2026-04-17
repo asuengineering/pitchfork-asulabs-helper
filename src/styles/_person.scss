@@ -15,4 +15,34 @@
 // CPT Person,
 // Archive Page. AKA: "The Directory."
 
-.post-type-archive-person {}
+.post-type-archive-person {
+
+	.page-header {
+		margin-top: 12rem;
+		margin-bottom: 4rem;
+	}
+
+	section.nonfeatured {
+		margin: 4rem 0;
+
+		h2 {
+			margin-bottom: 3rem;
+		}
+	}
+
+	.featured-person,
+	.person {
+
+		.post-thumbnail {
+
+			img {
+
+				border-radius: 50%;
+
+			}
+
+		}
+
+	}
+
+}

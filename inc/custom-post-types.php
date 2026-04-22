@@ -208,3 +208,7 @@ function asulabs_transition_make_faculty_type_taxonomy() {
     register_taxonomy( 'faculty-type', array( 'person' ), $args );
 }
 
+// Add UI support for featured images in the Person CPT.
+add_action( 'after_setup_theme', function () {
+    add_theme_support( 'post-thumbnails', array( 'person' ) );
+} );

@@ -5,7 +5,7 @@
  * Description:     Redefine custom post types associated with the ASU Labs theme so that they persist when the theme itself is deactivated.
  * Author:          ASU Engineering
  * Author URI:      https://engineering.asu.edu
- * Version:         0.0.1
+ * Version:         0.1
  *
  * @package         asulabs-migration
  * Text Domain:     asulabs-migration

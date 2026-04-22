@@ -13,7 +13,7 @@
 add_action( 'enqueue_block_assets', 'starter_plugin_enqueue_block_scripts' );
 function starter_plugin_enqueue_block_scripts() {
 
-		$the_plugin     = get_plugin_data( plugin_dir_path( __DIR__ ) . 'plugin-template.php' );
+		$the_plugin     = get_plugin_data( plugin_dir_path( __DIR__ ) . 'pitchfork-asulabs-helper.php' );
 		$the_version    = $the_plugin['Version'];
 		$plugin_version = $the_version . '.' . filemtime( plugin_dir_path( __DIR__ ) . 'dist/css/plugin.css' );
 
@@ -27,7 +27,7 @@ function pitchfork_asulabs_enqueue_frontend_styles() {
 
 	// Only enqueue on person CPT pages or when needed
 	if ( is_singular( 'person' ) || is_post_type_archive( 'person' ) || is_tax( 'faculty-type' ) ) {
-		$the_plugin     = get_plugin_data( plugin_dir_path( __DIR__ ) . 'plugin-template.php' );
+		$the_plugin     = get_plugin_data( plugin_dir_path( __DIR__ ) . 'pitchfork-asulabs-helper.php' );
 		$the_version    = $the_plugin['Version'];
 		$plugin_version = $the_version . '.' . filemtime( plugin_dir_path( __DIR__ ) . 'dist/css/plugin.css' );
 

@@ -1,7 +1,7 @@
 {
   "name": "pitchfork-plugin-template",
   "description": "An ASU Engineering plugin, designed for use with the Pitchfork theme.",
-  "version": "0.1",
+  "version": "0.2.0",
   "repository": "asuengineering/pitchfork-asulabs-helper",
   "license": "MIT",
   "dependencies": {
